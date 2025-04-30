@@ -1,23 +1,24 @@
 FROM debian:12-slim
 
-ENV DEBIAN_FRONTEND "noninteractive"
-ENV STEAM_APP_ID "1829350"
-ENV HOME "/opt/steam"
-ENV VRISING_PATH "/opt/steam/vrising"
-ENV WINEPREFIX "/opt/steam/.vrising_prefix"
+ENV DEBIAN_FRONTEND="noninteractive"
+ENV STEAM_APP_ID="1829350"
+ENV HOME="/opt/steam"
+ENV VRISING_PATH="/opt/steam/vrising"
+ENV WINEPREFIX="/opt/steam/.vrising_prefix"
 
-ENV GAME_PORT "27015"
-ENV QUERY_PORT "27016"
-ENV BIND_ADDRESS "0.0.0.0"
-ENV HIDE_IP "true"
-ENV LOWER_FPS_EMPTY "true"
-ENV SECURE "true"
-ENV DESCRIPTION "A VRISING SERVER"
-ENV EOS_LIST "true"
-ENV STEAM_LIST "false"
-ENV GAME_PRESET "StandardPvP"
-ENV DIFFICULTY "Difficulty_Normal"
-ENV SAVE_NAME "vrising_world"
+ENV GAME_PORT="27015"
+ENV QUERY_PORT="27016"
+ENV BIND_ADDRESS="0.0.0.0"
+ENV HIDE_IP="true"
+ENV LOWER_FPS_EMPTY="true"
+ENV SECURE="true"
+ENV DESCRIPTION="A VRISING SERVER"
+ENV EOS_LIST="true"
+ENV STEAM_LIST="false"
+ENV GAME_PRESET="StandardPvP"
+ENV DIFFICULTY="Difficulty_Normal"
+ENV SAVE_NAME="vrising_world"
+ENV MAX_PLAYERS="40"
 
 RUN sed -i 's#^Components: .*#Components: main non-free contrib#g' /etc/apt/sources.list.d/debian.sources \
     && echo steam steam/question select "I AGREE" | debconf-set-selections \
@@ -26,18 +27,18 @@ RUN sed -i 's#^Components: .*#Components: main non-free contrib#g' /etc/apt/sour
     && mkdir -pm755 /etc/apt/keyrings \
     && apt-get update \
     && apt-get install --no-install-recommends -y \
-        procps \
-        ca-certificates \
-        winbind \
-        cabextract \
-        dbus \
-        libfreetype6 \
-        curl \
-        wget \
-        locales \
-        lib32gcc-s1 \
-        steamcmd \
-        xvfb \
+    procps \
+    ca-certificates \
+    winbind \
+    cabextract \
+    dbus \
+    libfreetype6 \
+    curl \
+    wget \
+    locales \
+    lib32gcc-s1 \
+    steamcmd \
+    xvfb \
     && wget -O /etc/apt/keyrings/winehq-archive.key https://dl.winehq.org/wine-builds/winehq.key \
     && wget -NP /etc/apt/sources.list.d/ https://dl.winehq.org/wine-builds/debian/dists/bookworm/winehq-bookworm.sources \
     && apt-get update \

@@ -36,6 +36,7 @@ wine ${VRISING_PATH}/VRisingServer.exe \
     -description "${DESCRIPTION}" \
     -gamePort "${GAME_PORT}" \
     -queryPort "${QUERY_PORT}" \
+    -maxUsers "${MAX_PLAYERS}" \
     -bindAddress "${BIND_ADDRESS}" \
     -hideIpAddress "${HIDE_IP}" \
     -lowerFPSWhenEmpty "${LOWER_FPS_EMPTY}" \

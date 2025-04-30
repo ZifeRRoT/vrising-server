@@ -1,6 +1,6 @@
 services:
   vrising:
-    image: sknnr/vrising-dedicated-server:latest
+    image: ziferrot/vrising-server:latest
     ports:
       - "27015:27015/udp"
       - "27016:27016/udp"
@@ -19,6 +19,7 @@ services:
       - GAME_PRESET=StandardPvP
       - DIFFICULTY=Difficulty_Normal
       - SAVE_NAME=vrising_world
+      - MAX_PLAYERS=40
     volumes:
       - vrising-persistent-data:/opt/steam/vrising/save-data
 volumes:

@@ -32,11 +32,8 @@ wine ${VRISING_PATH}/VRisingServer.exe \
     -nographics \
     -persistentDataPath "${VRISING_PATH}/save-data" \
     -logFile "${VRISING_PATH}/logs/VRisingServer.log" \
-    -serverName "${SERVER_NAME}" \
-    -description "${DESCRIPTION}" \
     -gamePort "${GAME_PORT}" \
     -queryPort "${QUERY_PORT}" \
-    -maxUsers "${MAX_PLAYERS}" \
     -bindAddress "${BIND_ADDRESS}" \
     -hideIpAddress "${HIDE_IP}" \
     -lowerFPSWhenEmpty "${LOWER_FPS_EMPTY}" \
@@ -44,6 +41,9 @@ wine ${VRISING_PATH}/VRisingServer.exe \
     -listOnEOS "${EOS_LIST}" \
     -listOnSteam "${STEAM_LIST}" \
     -saveName "${SAVE_NAME}" \
+    $( [ -n "$MAX_PLAYERS" ] && echo "-maxUsers ${MAX_PLAYERS}" ) \
+    $( [ -n "$SERVER_NAME" ] && echo "-serverName ${SERVER_NAME}" ) \
+    $( [ -n "$DESCRIPTION" ] && echo "-description ${DESCRIPTION}" ) \
     $( [ -n "$GAME_PRESET" ] && echo "-preset ${GAME_PRESET}" ) \
     $( [ -n "$DIFFICULTY" ] && echo "-difficultyPreset ${DIFFICULTY}" ) \
     $( [ -n "$SERVER_PASSWORD" ] && echo "-password ${SERVER_PASSWORD}" ) \

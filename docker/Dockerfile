@@ -15,7 +15,6 @@ ENV SECURE="true"
 ENV EOS_LIST="true"
 ENV STEAM_LIST="false"
 ENV SAVE_NAME="vrising_world"
-ENV MAX_PLAYERS="40"
 
 RUN sed -i 's#^Components: .*#Components: main non-free contrib#g' /etc/apt/sources.list.d/debian.sources \
     && echo steam steam/question select "I AGREE" | debconf-set-selections \

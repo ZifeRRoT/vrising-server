@@ -30,6 +30,7 @@ RUN sed -i 's#^Components: .*#Components: main non-free contrib#g' /etc/apt/sour
     dbus \
     libfreetype6 \
     curl \
+    jq \
     wget \
     locales \
     lib32gcc-s1 \
